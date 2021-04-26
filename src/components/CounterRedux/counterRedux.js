@@ -1,10 +1,10 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { actionIncrease, actionDecrease } from '../../redux/store'
+import { actionIncrease, actionDecrease } from '../../redux/counterRedux'
 
 const CounterRedux = () => {
 
-    const number = useSelector(state => state.number);
+    const number = useSelector(state => state.counterReducer.number);
     const dispatch = useDispatch();
 
     return (
