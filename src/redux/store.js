@@ -20,21 +20,21 @@ export const actionDecrease = (num = 1) => ({
     }
 })
 
-export const actionSave = () => {
+export const actionSave = () => ({
     type: ACTION_ASYNC_SAVE
-}
+})
 
 const initialState = {
-    number = 0
+    number: 0
 }
 
 // create reducer for all the action
 const counterReducer = (state = initialState, action) => {
     switch (action.type) {
         case ACTION_INCREASE:
-            return {...state, number: number + action.payload.num}            
+            return {...state, number: state.number + action.payload.num}            
         case ACTION_DECREASE:
-            return {...state, number: number - action.payload.num}
+            return {...state, number: state.number - action.payload.num}
         case ACTION_ASYNC_SAVE:
             break;
         default: return state;
@@ -42,7 +42,9 @@ const counterReducer = (state = initialState, action) => {
 }
 
 const rootReducers = combineReducers({
-    counterRedux: counterRedux
+    counterReducer
 })
 
-export default createStore(rootReducers);
+export default createStore(
+    counterReducer, 
+);
