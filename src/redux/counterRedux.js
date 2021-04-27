@@ -48,7 +48,7 @@ export const actionSave = () => {
         
         const fakeRequest = new Promise((resolve, reject) => {
             setTimeout(() => {
-                // resolve("save done")
+                // resolve("save succeeded")
                 reject("save failed");
             }, 2000);
         })
