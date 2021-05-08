@@ -72,7 +72,7 @@ const initialState = {
 }
 
 // create reducer for all the action
-export default (state = initialState, action) => {
+const counterReducer = (state = initialState, action) => {
     switch (action.type) {
         case ACTION_INCREASE:
             return {...state, number: state.number + action.payload.num, savestate: "unsaved"} 
@@ -87,3 +87,5 @@ export default (state = initialState, action) => {
         default: return state;
     }
 }
+
+export default counterReducer;

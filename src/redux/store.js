@@ -1,10 +1,12 @@
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import counterReducer from './counterRedux';
+import counterReduxToolkitReducer from './counterReduxToolkit'
 
 
 const rootReducers = combineReducers({
-    counterReducer: counterReducer
+    counterReducer: counterReducer,
+    counterReduxToolkitReducer: counterReduxToolkitReducer,
 })
 
 // add add dev tool to composer
@@ -20,7 +22,10 @@ const composeEnhancers = devtoolCompose(middlewareEnhancer);
 const initialState = {
     counterReducer: {
         number: -1
-    }
+    },
+    counterReduxToolkitReducer: {
+        number: -2
+    } 
 }
 
 export default createStore(
