@@ -30,11 +30,12 @@ const counterReduxToolkit = createSlice({
     initialState: initialState,
     reducers: {
         actionIncrease (state, { payload = 1 }) {
-            debugger;
             state.number += payload;
+            state.savestate = 'unsaved';
         },
         actionDecrease (state, { payload = 1}) {
             state.number -= payload;
+            state.savestate = 'unsaved';
         }
     },
     extraReducers: (builder) => {

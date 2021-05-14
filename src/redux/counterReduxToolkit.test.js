@@ -1,6 +1,7 @@
 import reducers, { actionIncrease, actionDecrease, actionAsyncSave } from './counterReduxToolkit';
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
+import { actionAsyncSaveSucceed } from './counterRedux';
 
 describe('testing state changes', () => {
 
@@ -56,20 +57,32 @@ describe('testing state changes', () => {
     })
 })
 
-describe('testing asynchronous saving', () => {
-    const middlewares = [thunk]
-    const mockStore = configureMockStore(middlewares)
+describe('testing actionAsyncSave created by createAsyncThunk', () => {
+    // const middlewares = [thunk]
+    // const mockStore = configureMockStore(middlewares)
 
-    const initialState = {number: 12, savestate: 'unsaved'}
-    const store = mockStore(initialState)
+    // const initialState = {number: 12, savestate: 'unsaved'}
+    // const store = mockStore(initialState)
 
     it('called action save and failed', async () => {
 
-        //consequent actions
-        const expectedActions = [actionAsyncSaveStarted("saving..."), actionAsyncSaveFail('save failed')]
+        const dispatch = jest.fn();
+        const getState = jest.fn();
+        const options = undefined;
+        const arg = "save succeeded";
+        
+        
+        // {"meta": {"arg": undefined, "requestId": "6U5BSgkwf6RqARu9v_Knk", "requestStatus": "pending"}, "payload": undefined, "type": "counter/asyncSave/pending"}
+        const actionResult = await actionAsyncSave()(dispatch, getState, options);
 
-        await store.dispatch(actionSave());
+        const expectedActions = [
+            actionAsyncSave.pending(actionResult.meta.requestId),
+            actionAsyncSave.fulfilled(actionResult.payload, actionResult.meta.requestId)
+        ]
 
-        expect(store.getActions()).toEqual(expectedActions);
+        // begin with 1 not 0
+        expect(dispatch).toHaveBeenNthCalledWith(1, expectedActions[0])
+
+        expect(dispatch).toHaveBeenNthCalledWith(2, expectedActions[1])
     })
 })

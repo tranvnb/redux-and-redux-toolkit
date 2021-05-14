@@ -1,5 +1,4 @@
 import reducers, { actionIncrease, actionDecrease, actionSave, actionAsyncSaveStarted, actionAsyncSaveFail } from './counterRedux';
-// import { useDispatch } from 'react-redux';
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 

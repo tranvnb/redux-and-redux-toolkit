@@ -55,11 +55,9 @@ export const actionSave = () => {
 
         return fakeRequest
             .then(result => {
-                console.log("success", result)
                 dispathObject(actionAsyncSaveSucceed(result))
             })
             .catch(error => {
-                console.log("error", error)
                 dispathObject(actionAsyncSaveFail(error))
             }) 
 
