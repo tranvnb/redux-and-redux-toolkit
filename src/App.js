@@ -6,7 +6,6 @@ function App() {
   return (
     <div className="App">
       <CounterRedux />
-      {/* <hr></hr> */}
       <br/>
       <CounterReduxToolkit/>
     </div>
