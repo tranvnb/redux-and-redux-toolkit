@@ -69,8 +69,6 @@ describe('testing actionAsyncSave created by createAsyncThunk', () => {
         
         const actionResult = await actionAsyncSave()(dispatch, getState, options);
 
-        console.log('actionResult',actionResult);
-
         //For successful request
         expect(dispatch).toHaveBeenNthCalledWith(2, expect.objectContaining({payload: "save succeeded"}))
 

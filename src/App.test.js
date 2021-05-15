@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import { StrictMode } from 'react'
-import App from './App';
-import store from './redux/store'
-import { Provider } from 'react-redux'
+import React, { StrictMode } from "react";
+import App from "./App";
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 test('renders learn react link', () => {
   render(
