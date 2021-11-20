@@ -1,2 +1,2 @@
 # redux-and-redux-toolkit
-[Demon](https://vivacious-befitting-softball.glitch.me/)
+[Demo](https://vivacious-befitting-softball.glitch.me/)
